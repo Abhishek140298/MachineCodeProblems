@@ -41,3 +41,9 @@
 .read-the-docs {
   color: #888;
 }
+
+.myBox {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 20px;
+}
