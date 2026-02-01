@@ -16,10 +16,10 @@ const CountDownWidget = () => {
     if (Date.parse(datetime)) {
     } else {
       let [full, value, timeType] = datetime.match(
-        /^(\d+)\s*(minutes?|days?|hours?|years?)$/i
+        /^(\d+)\s*(mins?|minutes?|days?|hours?|years?)$/i
       );
 
-      console.log("timer", value);
+      console.log("timer", value,timeType);
       if (timeType == "day" || timeType === "days") {
         const durationMs = value * 24 * 60 * 60 * 1000;
 
@@ -47,6 +47,18 @@ const CountDownWidget = () => {
           setSeconds((prev) => seconds);
           console.log(`${days}d ${hours}h ${minutes}m ${seconds}s`);
         }, 1000);
+      }
+      else if(timeType=='min'||timeType=='minutes'||timeType=='mins'||timeType==='minute') {
+          const durationMS=value*60*1000
+          let endDate=Date.now()+durationMS
+          const interval=setInterval(()=>{
+            let dif=endDate-Date.now()
+            if(dif<=0){clearInterval(interval)
+                return
+            }
+            const totalSeconds=Math.floor(dif/1000)
+            
+          },1000)
       }
     }
   };

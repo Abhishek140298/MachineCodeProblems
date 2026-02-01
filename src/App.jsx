@@ -16,12 +16,16 @@ import NavigationBar from "./components/NavigationBar";
 import Pagination from './components/Pagination'
 import Tictactoe from "./components/Tictactoe";
 import CountdownWidget from './components/CountdownWidgets'
+import InfiniteScroll from "./components/InfiniteScroll";
+import DynamicContentFiltering from "./components/DynamicContentFiltering";
+import FetchDataFromAPi from "./components/FetchAPi";
+import DragAndDrop from "./components/DragAndDrop";
 
 function App() {
   const [progress,setProgress]=useState(0)
   return (
     <> 
-<CountdownWidget/>
+<DragAndDrop/>
     </>
   );
 }
