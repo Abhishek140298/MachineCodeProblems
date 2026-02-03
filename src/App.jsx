@@ -20,12 +20,13 @@ import InfiniteScroll from "./components/InfiniteScroll";
 import DynamicContentFiltering from "./components/DynamicContentFiltering";
 import FetchDataFromAPi from "./components/FetchAPi";
 import DragAndDrop from "./components/DragAndDrop";
+import SocialMediaSharingButton from "./components/SocialMediaSharingButton";
 
 function App() {
   const [progress,setProgress]=useState(0)
   return (
     <> 
-<DragAndDrop/>
+<SocialMediaSharingButton/>
     </>
   );
 }
