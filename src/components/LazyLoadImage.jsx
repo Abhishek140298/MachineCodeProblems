@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 
 const LazyLoadImage = ({ src, alt, fallback }) => {
   const imageRef = useRef();
@@ -14,10 +14,12 @@ const LazyLoadImage = ({ src, alt, fallback }) => {
       },
       { threshold: 0.1, rootMargin: "150px" }
     );
-    if(imageRef.current){observer.observe(imageRef)}
+    if(imageRef.current){observer.observe(imageRef.current)}
     return ()=>observer.disconnect()
   }, []);
+ 
 
+console.log("Image")
   return (
     <div ref={imageRef}>
       Lazy Load image
@@ -25,3 +27,49 @@ const LazyLoadImage = ({ src, alt, fallback }) => {
     </div>
   );
 };
+
+
+export default LazyLoadImage
+
+//For multiple methods
+{/*import { useEffect, useRef } from "react";
+
+const ImageList = ({ images }) => {
+  const observerRef = useRef(null);
+
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            observerRef.current.unobserve(img);
+          }
+        });
+      },
+      {
+        rootMargin: "150px",
+        threshold: 0.1
+      }
+    );
+
+    return () => observerRef.current.disconnect();
+  }, []);
+
+  return (
+    <div>
+      {images.map((src, i) => (
+        <img
+          key={i}
+          data-src={src}
+          alt=""
+          ref={(el) => el && observerRef.current.observe(el)}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default ImageList;
+ */}
