@@ -73,3 +73,35 @@ const ImageList = ({ images }) => {
 
 export default ImageList;
  */}
+
+ //Native LOading 
+ {/*<img
+  src="https://example.com/image.jpg"
+  alt="demo"
+  loading="lazy"
+/> */}
+
+//background observer
+{/*const Box = ({ image }) => {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <div
+      className="box"
+      style={{
+        backgroundImage: loaded ? `url(${image})` : "none",
+      }}
+      ref={(el) => {
+        if (!el) return;
+        const observer = new IntersectionObserver(([entry]) => {
+          if (entry.isIntersecting) {
+            setLoaded(true);
+            observer.disconnect();
+          }
+        });
+        observer.observe(el);
+      }}
+    />
+  );
+};
+ */}
