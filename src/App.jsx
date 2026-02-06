@@ -23,12 +23,13 @@ import DragAndDrop from "./components/DragAndDrop";
 import SocialMediaSharingButton from "./components/SocialMediaSharingButton";
 import LazyLoadImage from "./components/LazyLoadImage";
 import Autocomplete from "./components/AutocompleteSearch";
+import LightBox from './components/LightBox'
 
 function App() {
   const [progress, setProgress] = useState(0);
   return (
     <>
-    <Autocomplete/>
+    <LightBox/>
     </>
   );
 }
