@@ -1,0 +1,128 @@
+{
+    "users": {
+      "u1": {
+        "id": "u1",
+        "userName": "Abhishek",
+        "avatar": "https://avatar.com/u1.png",
+        "isOnline": true,
+        "lastSeen": 1708000000000,
+        "conversationIds": ["c1", "c2"]
+      },
+      "u2": {
+        "id": "u2",
+        "userName": "Manish",
+        "avatar": "https://avatar.com/u2.png",
+        "isOnline": false,
+        "lastSeen": 1707990000000,
+        "conversationIds": ["c1", "c2"]
+      },
+      "u3": {
+        "id": "u3",
+        "userName": "Divyansh",
+        "avatar": "https://avatar.com/u3.png",
+        "isOnline": true,
+        "lastSeen": 1708002000000,
+        "conversationIds": ["c2"]
+      }
+    },
+  
+    "conversations": {
+      "c1": {
+        "id": "c1",
+        "type": "direct",
+        "members": ["u1", "u2"],
+        "lastMessageId": "m3",
+        "createdAt": 1707900000000,
+        "updatedAt": 1708000200000,
+        "unreadCount": {
+          "u1": 0,
+          "u2": 1
+        }
+      },
+      "c2": {
+        "id": "c2",
+        "type": "group",
+        "groupName": "Frontend Team",
+        "members": ["u1", "u2", "u3"],
+        "lastMessageId": "m7",
+        "createdAt": 1707910000000,
+        "updatedAt": 1708001300000,
+        "unreadCount": {
+          "u1": 1,
+          "u2": 0,
+          "u3": 0
+        }
+      }
+    },
+  
+    "messages": {
+      "c1": {
+        "byId": {
+          "m1": {
+            "id": "m1",
+            "conversationId": "c1",
+            "senderId": "u1",
+            "text": "Hello Manish 👋",
+            "status": "read",
+            "createdAt": 1708000000000
+          },
+          "m2": {
+            "id": "m2",
+            "conversationId": "c1",
+            "senderId": "u2",
+            "text": "Hey bro!",
+            "status": "read",
+            "createdAt": 1708000100000
+          },
+          "m3": {
+            "id": "m3",
+            "conversationId": "c1",
+            "senderId": "u1",
+            "text": "How is the project going?",
+            "status": "delivered",
+            "createdAt": 1708000200000
+          }
+        },
+        "allIds": ["m1", "m2", "m3"]
+      },
+  
+      "c2": {
+        "byId": {
+          "m4": {
+            "id": "m4",
+            "conversationId": "c2",
+            "senderId": "u3",
+            "text": "Guys standup at 10 AM",
+            "status": "read",
+            "createdAt": 1708001000000
+          },
+          "m5": {
+            "id": "m5",
+            "conversationId": "c2",
+            "senderId": "u1",
+            "text": "Okay 👍",
+            "status": "read",
+            "createdAt": 1708001100000
+          },
+          "m6": {
+            "id": "m6",
+            "conversationId": "c2",
+            "senderId": "u2",
+            "text": "Joining in 5 mins",
+            "status": "read",
+            "createdAt": 1708001200000
+          },
+          "m7": {
+            "id": "m7",
+            "conversationId": "c2",
+            "senderId": "u3",
+            "text": "Cool.",
+            "status": "sent",
+            "createdAt": 1708001300000
+          }
+        },
+        "allIds": ["m4", "m5", "m6", "m7"]
+      }
+    }
+  }
+  

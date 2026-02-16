@@ -24,12 +24,15 @@ import SocialMediaSharingButton from "./components/SocialMediaSharingButton";
 import LazyLoadImage from "./components/LazyLoadImage";
 import Autocomplete from "./components/AutocompleteSearch";
 import LightBox from './components/LightBox'
+import ChatApplication from "./components/Chatapplication";
 
 function App() {
   const [progress, setProgress] = useState(0);
   return (
     <>
-    <LazyLoadImage src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=800"/>
+    {/* <LazyLoadImage src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=800"/> */}
+    
+    <ChatApplication/>
     </>
   );
 }
