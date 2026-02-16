@@ -1,25 +1,52 @@
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 const LazyLoadImage = ({ src, alt, fallback }) => {
   const imageRef = useRef();
   const [isVisible, setVisible] = useState(false);
+  console.log("Image ,", src);
+  const throttleInterserctionObersver = (callback, delay) => {
+    let throttle = false;
+    return (...arg) => {
+      if (throttle) return;
+      callback(...arg);
+      throttle = true;
+      setTimeout(() => {
+        throttle = false;
+      }, delay);
+    };
+  };
+
   //we will use IntersectionObserver
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entries]) => {
-        if (entries.isIntersecting) {
+    const throttleCallback = throttleInterserctionObersver(
+      (entries, observer) => {
+        const entry = entries[0];
+
+        if (entry.isIntersecting) {
+            console.log("Image122",entries);
+
           setVisible(true);
           observer.disconnect();
         }
       },
+      500
+    );
+    const observer = new IntersectionObserver(
+      //   ([entries]) => {
+      //     if (entries.isIntersecting) {
+      //       setVisible(true);
+      //       observer.disconnect();
+      //     }
+      //   },
+      throttleCallback,
       { threshold: 0.1, rootMargin: "150px" }
     );
-    if(imageRef.current){observer.observe(imageRef.current)}
-    return ()=>observer.disconnect()
+    if (imageRef.current) {
+      observer.observe(imageRef.current);
+    }
+    return () => observer.disconnect();
   }, []);
- 
 
-console.log("Image")
   return (
     <div ref={imageRef}>
       Lazy Load image
@@ -28,11 +55,11 @@ console.log("Image")
   );
 };
 
-
-export default LazyLoadImage
+export default LazyLoadImage;
 
 //For multiple methods
-{/*import { useEffect, useRef } from "react";
+{
+  /*import { useEffect, useRef } from "react";
 
 const ImageList = ({ images }) => {
   const observerRef = useRef(null);
@@ -72,17 +99,21 @@ const ImageList = ({ images }) => {
 };
 
 export default ImageList;
- */}
+ */
+}
 
- //Native LOading 
- {/*<img
+//Native LOading
+{
+  /*<img
   src="https://example.com/image.jpg"
   alt="demo"
   loading="lazy"
-/> */}
+/> */
+}
 
 //background observer
-{/*const Box = ({ image }) => {
+{
+  /*const Box = ({ image }) => {
   const [loaded, setLoaded] = useState(false);
 
   return (
@@ -104,4 +135,5 @@ export default ImageList;
     />
   );
 };
- */}
+ */
+}
