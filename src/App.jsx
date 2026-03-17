@@ -25,6 +25,8 @@ import LazyLoadImage from "./components/LazyLoadImage";
 import Autocomplete from "./components/AutocompleteSearch";
 import LightBox from './components/LightBox'
 import ChatApplication from "./components/Chatapplication";
+import Events from "./components/Events";
+import SnakeAndLadder from "./components/SnakeAndLadder";
 
 function App() {
   const [progress, setProgress] = useState(0);
@@ -32,7 +34,8 @@ function App() {
     <>
     {/* <LazyLoadImage src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=800"/> */}
     
-    <ChatApplication/>
+    {/* <Events/> */}
+    <SnakeAndLadder/>
     </>
   );
 }
