@@ -7,7 +7,6 @@ const FetchDataFromAPi = () => {
   const [dots, setDots] = useState("");
 
   const fetchUser = async () => {
-    console.log("JJJj");
     setLoading(true);
     const userRes = await fetch(`${api_endpoint}/users`);
     const users = await userRes.json();
