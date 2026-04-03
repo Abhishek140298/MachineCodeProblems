@@ -35,7 +35,7 @@ function App() {
     {/* <LazyLoadImage src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=800"/> */}
     
     {/* <Events/> */}
-    <AnalogClock/>
+    <InfiniteScroll/>
     </>
   );
 }
