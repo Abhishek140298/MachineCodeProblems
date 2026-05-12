@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, Suspense } from "react";
 
 import "./App.css";
 import LikeDislike from "./components/LikeDislike";
@@ -23,19 +23,23 @@ import DragAndDrop from "./components/DragAndDrop";
 import SocialMediaSharingButton from "./components/SocialMediaSharingButton";
 import LazyLoadImage from "./components/LazyLoadImage";
 import Autocomplete from "./components/AutocompleteSearch";
-import LightBox from './components/LightBox'
+import LightBox from "./components/LightBox";
 import ChatApplication from "./components/Chatapplication";
 import Events from "./components/Events";
 import SnakeAndLadder from "./components/SnakeAndLadder";
-
+import InfiniteScrollWithIntersection from "./components/InfiniteScrollInterSection";
+const LazyLoad = React.lazy(() => import("./components/LazyLoad"));
 function App() {
   const [progress, setProgress] = useState(0);
   return (
     <>
-    {/* <LazyLoadImage src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=800"/> */}
-    
-    {/* <Events/> */}
-    <InfiniteScroll/>
+      {/* <LazyLoadImage src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=800"/> */}
+
+      {/* <Events/> */}
+      <InfiniteScroll />
+      {/* <Suspense fallback={<div>Loading_______</div>}>
+        <LazyLoad />
+      </Suspense> */}
     </>
   );
 }
