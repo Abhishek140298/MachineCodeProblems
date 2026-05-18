@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from "react";
+import React, { useState, Suspense ,createContext } from "react";
 
 import "./App.css";
 import LikeDislike from "./components/LikeDislike";
@@ -29,17 +29,31 @@ import Events from "./components/Events";
 import SnakeAndLadder from "./components/SnakeAndLadder";
 import InfiniteScrollWithIntersection from "./components/InfiniteScrollInterSection";
 const LazyLoad = React.lazy(() => import("./components/LazyLoad"));
+import ThemeComponent from "./components/ThemeUpdateWithContex";
+export const ThemeContext=createContext()
+
 function App() {
   const [progress, setProgress] = useState(0);
+  const [theme,setTheme]=useState("dark")
+
+const toggle=()=>{
+  console.log("Theme",theme)
+  setTheme((prev)=>{if(prev=="dark")return "light"
+  else{return "dark"}
+})}
+
   return (
     <>
       {/* <LazyLoadImage src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=800"/> */}
 
       {/* <Events/> */}
-      <InfiniteScroll />
+   
       {/* <Suspense fallback={<div>Loading_______</div>}>
         <LazyLoad />
       </Suspense> */}
+      <ThemeContext.Provider value={{theme,toggle}}>
+      <ThemeComponent />
+        </ThemeContext.Provider>
     </>
   );
 }
