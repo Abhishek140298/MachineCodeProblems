@@ -31,6 +31,9 @@ import InfiniteScrollWithIntersection from "./components/InfiniteScrollInterSect
 const LazyLoad = React.lazy(() => import("./components/LazyLoad"));
 import ThemeComponent from "./components/ThemeUpdateWithContex";
 export const ThemeContext=createContext()
+// import ErrorBoundaries from "./components/ErrorBoundries";
+import ParkingLot from "./components/ParkingLot";
+import VirtualizationInInfiniteScroll from "./components/InfiniteScrollWithVirtualization";
 
 function App() {
   const [progress, setProgress] = useState(0);
@@ -51,9 +54,15 @@ const toggle=()=>{
       {/* <Suspense fallback={<div>Loading_______</div>}>
         <LazyLoad />
       </Suspense> */}
-      <ThemeContext.Provider value={{theme,toggle}}>
+      {/* <ThemeContext.Provider value={{theme,toggle}}>
       <ThemeComponent />
-        </ThemeContext.Provider>
+        </ThemeContext.Provider> */}
+        {/**!Instead of combaning whole app in the Error Boundaries ,please seprate the component which are more prone to error
+         * So other component will keeps working only Error will show the fallback for error
+         */}
+       {/* <ErrorBoundaries> <InfiniteScrollWithIntersection/></ErrorBoundaries> */}
+
+      <VirtualizationInInfiniteScroll/>
     </>
   );
 }
