@@ -34,6 +34,7 @@ export const ThemeContext=createContext()
 // import ErrorBoundaries from "./components/ErrorBoundries";
 import ParkingLot from "./components/ParkingLot";
 import VirtualizationInInfiniteScroll from "./components/InfiniteScrollWithVirtualization";
+import FormHandling from "./components/FromHandling";
 
 function App() {
   const [progress, setProgress] = useState(0);
@@ -62,7 +63,7 @@ const toggle=()=>{
          */}
        {/* <ErrorBoundaries> <InfiniteScrollWithIntersection/></ErrorBoundaries> */}
 
-      <VirtualizationInInfiniteScroll/>
+      <FormHandling fields={["email","password","submitbutton"]}/>
     </>
   );
 }
