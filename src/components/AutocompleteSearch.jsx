@@ -118,7 +118,6 @@ const suggestionList=[]
 // mock_data.sort()
 if(map.has(query))return map.get(query)
 for(let data of mock_data){
-    console.log("I am coming",data)
 
     let q=0
     while(q<query.length){
@@ -140,6 +139,9 @@ for(let data of mock_data){
 map.set(query,suggestionList)
 return suggestionList
 }
+
+
+//sort+binary search algorithm for fetching data ,and trie also
 const Autocomplete=()=>{
 
 const [loading,setLoading]=useState(false)
@@ -167,7 +169,8 @@ const handleSearch=(value)=>{
 
 const handleKeyDown=(e)=>{
     console.log("Keydown",e.code,suggestionList,selectedSuggestion)
-    e.preventDefault()   if(selectedSuggestion>=0&&selectedSuggestion<suggestionList?.length){
+    e.preventDefault()
+       if(selectedSuggestion>=0&&selectedSuggestion<suggestionList?.length){
     switch(e.code){
         case "ArrowDown":
             setSelctedSuggestion(prev=>prev+1)

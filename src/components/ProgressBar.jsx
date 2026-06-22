@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useState ,useEffect} from "react";
 
-export default function ProgressBar({progress}) {
+export default function ProgressBar() {
+  const [progress,setProgress]=useState(0)
+
+  useEffect(()=>{
+const timer=setInterval(()=>{
+  setProgress(prev=>prev+5)
+  
+},2000)
+return ()=>clearInterval(timer)
+  },[])
+
+  useEffect(()=>{
+    if(progress>=100)setProgress(0)
+  },[progress])
+
   return (
     <div
       style={{
@@ -20,6 +34,7 @@ export default function ProgressBar({progress}) {
           marginLeft: "10px",
           borderRadius: "5px",
           background: `linear-gradient(to right, green ${progress}%, lightgrey ${progress}%)`,
+        transition:"background-color 1s ease-in-out"
           
         }}
       >

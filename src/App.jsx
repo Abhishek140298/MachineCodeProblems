@@ -65,7 +65,7 @@ const toggle=()=>{
 
       {/* <FormHandling fields={["email","password","submitbutton"]}/> */}
 
-      <Autocomplete/>
+ {/* <ProgressBar/> */}
     </>
   );
 }
