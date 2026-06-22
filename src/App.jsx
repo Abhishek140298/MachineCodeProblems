@@ -63,7 +63,9 @@ const toggle=()=>{
          */}
        {/* <ErrorBoundaries> <InfiniteScrollWithIntersection/></ErrorBoundaries> */}
 
-      <FormHandling fields={["email","password","submitbutton"]}/>
+      {/* <FormHandling fields={["email","password","submitbutton"]}/> */}
+
+      <Autocomplete/>
     </>
   );
 }
