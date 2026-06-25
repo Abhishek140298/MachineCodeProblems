@@ -1,0 +1,59 @@
+{
+    "id": "root",
+    "name": "src",
+    "type": "folder",
+    "children": [
+      {
+        "id": "1",
+        "name": "components",
+        "type": "folder",
+        "children": [
+          {
+            "id": "2",
+            "name": "Button.tsx",
+            "type": "file"
+          },
+          {
+            "id": "3",
+            "name": "Modal.tsx",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "name": "pages",
+        "type": "folder",
+        "children": [
+          {
+            "id": "5",
+            "name": "Home.tsx",
+            "type": "file"
+          },
+          {
+            "id": "6",
+            "name": "Profile.tsx",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "name": "utils",
+        "type": "folder",
+        "children": [
+          {
+            "id": "8",
+            "name": "api.ts",
+            "type": "file"
+          },
+          {
+            "id": "9",
+            "name": "helpers.ts",
+            "type": "file"
+          }
+        ]
+      }
+    ]
+  }
+  

@@ -35,6 +35,7 @@ export const ThemeContext=createContext()
 import ParkingLot from "./components/ParkingLot";
 import VirtualizationInInfiniteScroll from "./components/InfiniteScrollWithVirtualization";
 import FormHandling from "./components/FromHandling";
+import TypeAhead from "./components/TypeAhead";
 
 function App() {
   const [progress, setProgress] = useState(0);
@@ -64,8 +65,7 @@ const toggle=()=>{
        {/* <ErrorBoundaries> <InfiniteScrollWithIntersection/></ErrorBoundaries> */}
 
       {/* <FormHandling fields={["email","password","submitbutton"]}/> */}
-
- {/* <ProgressBar/> */}
+ <TypeAhead/>
     </>
   );
 }

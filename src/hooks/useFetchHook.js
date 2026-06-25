@@ -27,6 +27,6 @@ const useFetch = (url) => {
   };
 
   useEffect(() => {
-    co;
+    
   }, [url]);
 };
