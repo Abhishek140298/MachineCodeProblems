@@ -36,6 +36,11 @@ import ParkingLot from "./components/ParkingLot";
 import VirtualizationInInfiniteScroll from "./components/InfiniteScrollWithVirtualization";
 import FormHandling from "./components/FromHandling";
 import TypeAhead from "./components/TypeAhead";
+import GridLight from "./components/Gridlight";
+import ToastProvider from "./components/ToastNotification";
+import FormComponent from "./components/Form";
+import MultipleRequestComponent from "./components/MultipleRequestComponent";
+import OTPComponent from "./components/OTPComponent";
 
 function App() {
   const [progress, setProgress] = useState(0);
@@ -65,7 +70,12 @@ const toggle=()=>{
        {/* <ErrorBoundaries> <InfiniteScrollWithIntersection/></ErrorBoundaries> */}
 
       {/* <FormHandling fields={["email","password","submitbutton"]}/> */}
- <TypeAhead/>
+ {/* <ToastProvider>
+  <GridLight/>
+</ToastProvider> */}
+{/* <FormComponent handleSubmit={()=>{console.log("I am clicked")}}/> */}
+{/* <MultipleRequestComponent/> */}
+<OTPComponent/>
     </>
   );
 }

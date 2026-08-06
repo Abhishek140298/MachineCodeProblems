@@ -1,327 +1,511 @@
-// import React from "react";
+// // import React from "react";
 
-// //Navigation with nested Items
+// // //Navigation with nested Items
 
-// const navItems = [
-//   { name: "Home" },
-//   {
-//     name: "Subscription",
-//     subNav: [{ name: "Monthly" }, { name: "Yealy" }, { name: "lifetime" }],
-//   },
-//   { name: "Mysubcriptions" },
-//   { name: "payment", subNav: [{ name: "online" }, { name: "offline" }] },
-// ];
+// // const navItems = [
+// //   { name: "Home" },
+// //   {
+// //     name: "Subscription",
+// //     subNav: [{ name: "Monthly" }, { name: "Yealy" }, { name: "lifetime" }],
+// //   },
+// //   { name: "Mysubcriptions" },
+// //   { name: "payment", subNav: [{ name: "online" }, { name: "offline" }] },
+// // ];
 
-// function NavTab({ items }) {
-//   const [openCurrent, setOpenCurrent] = React.useState(null);
-//   const handleOpenMenu = (index) => {
-//     setOpenCurrent(prev=>prev!==index?index:null);
-//   };
-//   return (
-//     <>
-//       {items?.map((item, index) => {
-//         if (item.subNav) {
-//           return (
-//             <>
-//               <div onClick={() => handleOpenMenu(index)}>
-//                 {item.name}
-//                 {openCurrent == index ? "▲" : "▼"}
-//               </div>
+// // function NavTab({ items }) {
+// //   const [openCurrent, setOpenCurrent] = React.useState(null);
+// //   const handleOpenMenu = (index) => {
+// //     setOpenCurrent(prev=>prev!==index?index:null);
+// //   };
+// //   return (
+// //     <>
+// //       {items?.map((item, index) => {
+// //         if (item.subNav) {
+// //           return (
+// //             <>
+// //               <div onClick={() => handleOpenMenu(index)}>
+// //                 {item.name}
+// //                 {openCurrent == index ? "▲" : "▼"}
+// //               </div>
 
-//               {openCurrent == index ? <NavTab items={item?.subNav} /> : null}
-//             </>
-//           );
-//         } else {
-//           return <div key={index}>{item.name}</div>;
-//         }
-//       })}
-//     </>
-//   );
-// }
+// //               {openCurrent == index ? <NavTab items={item?.subNav} /> : null}
+// //             </>
+// //           );
+// //         } else {
+// //           return <div key={index}>{item.name}</div>;
+// //         }
+// //       })}
+// //     </>
+// //   );
+// // }
 
-// export default function NavigationBar() {
-//   return (
-//     <div style={{display:'flex'}}>
-//       <NavTab items={navItems} />
-//     </div>
-//   );
-// }
-// import React ,{useState}from 'react'
-// import folderStructure from '../fileexplorerData.json'
+// // export default function NavigationBar() {
+// //   return (
+// //     <div style={{display:'flex'}}>
+// //       <NavTab items={navItems} />
+// //     </div>
+// //   );
+// // }
+// // import React ,{useState}from 'react'
+// // import folderStructure from '../fileexplorerData.json'
+
+// // const TreeNode=({node})=>{
+// //   const [expanded,setExpanded]=useState(false)
+// //   const handleExpand=()=>{
+// // setExpanded(prev=>!prev)
+// //   }
+
+// //     if(node.type==="folder"){return(
+// // <div>
+// // <div onClick={handleExpand}>{node.name} +</div>
+// //     { expanded&& node.children?.map((child,text)=><>
+
+// //       <TreeNode  node={child}/></>)}
+// //       </div>)
+// //     }
+// //     else{
+// //       console.log("Hi ther",node.name)
+
+// //       return<div>{node.name }-</div>
+// //     }
+
+// // }
+
+// // const FileExplorer=()=>{
+
+// //   console.log("Folfder Strucutre",folderStructure)
+// //   return(<div><TreeNode node={folderStructure}/></div>)
+// // }
+
+// // export default FileExplorer
+
+// // import React ,{useEffect,useState} from 'react'
+
+// // import folderData from '../fileexplorerData.json'
+// // //item={a:b,c:d}
+// // // {...item,...(true&&{child:[]})}
+
+// // const insertNode=(node,targetID,itemTyep)=>{
+
+// // }
+
+// // const TreeNode=({node})=>{
+// // const [expanded,setExpanded]=useState(false)
+// // const [openInput,setOpenInput]=useState(false)
+
+// // const handleExpandFolder=(e)=>{
+// //   //Event prapogation is important because it it is firing parent event ,which causing parent to close
+// //   e.stopPropagation()
+// //   setExpanded(prev=>!prev)
+// // }
+// // const addFolder=( )=>{
+// //   console.log("Id",foderId)
+// //   setOpenInput(true)
+// //   console.log("FOlder",folder)
+
+// // }
+
+// // const handleSubmit=()=>{
+
+// // }
+// //   if(node.type="folder"){
+// //       return <div onClick={handleExpandFolder}>
+// //         <h3>{node.name}</h3>
+// //         <span onClick={addFolder}>+</span>
+// //         {openInput&&<input type="text"/>}
+// //         {expanded&&node.children?.map((child,index)=><TreeNode node={child}/>)}
+// //       </div>
+// //   }
+// //   else{
+// //       return <div><h6>{node.name}</h6>
+// //      </div>
+// //   }
+// // }
+
+// // const FileExplorer=()=>{
+// //   const [folder,setFolder]=useState(folderData)
+
+// //    return <>
+
+// //    <div>
+// // <TreeNode node={folder} addFolder={addFolder}/>
+// //    </div>
+// //    </>
+// // }
+
+// // export default FileExplorer
+
+// // import React, { useState, useEffect } from "react";
+// // import nodeS from "../fileexplorerData.json";
+
+// // const TreeNode = ({ node, addNode,nodeStructure ,setNodeStructure}) => {
+// //   const [expanded, setExapnaded] = useState(false);
+// //   const [addNodeActive, setAddNodeActive] = useState(false);
+// //   const [newFolder, setNewFolder] = useState({ name: "Hell", type: "folder" });
+
+// //   const handleExpandFolder = (e) => {
+// //     e.stopPropagation();
+// //     setExapnaded((prev) => !prev);
+// //   };
+// //   const handleAdd = (e) => {
+// //     e.stopPropagation();
+// //     setAddNodeActive((prev) => !prev);
+// //   };
+
+// //   const handleAddFolderOrfile=(id)=>{
+// //  const updateNode=  addNode(nodeStructure,newFolder,id)
+// //  setNodeStructure(updateNode)
+// //   }
+// // const handleFileNameANdType=(event)=>{
+// //   if(event.target.name=="name"){
+// //     setNewFolder({...newFolder,name:event.target.value})
+// //   }
+// //   else{
+// //     setNewFolder({...newFolder,type:event.target.value,...(event.target.value=="folder"?{children:[]}:{})})
+
+// //   }
+// // }
+
+// //   useEffect(() => {
+// //     console.log("Hello",newFolder)
+// //    // setNodeStructure( addNode(nodeS, newFolder, "1"))
+// //   }, []);
+
+// //   if (node.type == "folder") {
+// //     return (
+// //       <div >
+// //         <span onClick={handleExpandFolder}>{node.name}</span>
+// //         <>+E</>
+// //         <div onClick={handleAdd}>Add</div>
+// //         {addNodeActive ? (
+// //           <>
+// //             <input name="name" type="text" placeholder="Name" onChange={handleFileNameANdType}/>
+// //             <input name="type" type="text" placeholder="type"  onChange={handleFileNameANdType}/>
+// //             <button onClick={()=>handleAddFolderOrfile(node.id)}>Add</button>
+// //           </>
+// //         ) : null}
+// //         {expanded &&
+// //           node.children.map((child, index) => <TreeNode node={child} addNode={addNode} nodeStructure={nodeStructure} setNodeStructure={setNodeStructure}/>)}
+// //       </div>
+// //     );
+// //   } else {
+// //     return (
+// //       <div>
+// //         <span>{node.name}</span>
+// //       </div>
+// //     );
+// //   }
+// // };
+
+// // export default function FileExplorer() {
+// //   console.log("Fi", nodeS);
+// //   const [nodeStructure, setNodeStructure] = useState(nodeS);
+// //   const addNode = (node, newNode, parentId) => {
+// //     console.log("Add Node",newNode)
+// //     // console.log("vfjhsfh",node,newNode,parentId)
+// //     //     return node.map((nod,index)=>{
+// //     //       if(nod.id==parentId&&nod.type=="folder"){
+// //     //         return {
+// //     //           ...node,children:[...(node.children||[]),{...newNode,id:node.children.length+parentId}]
+// //     //         }
+// //     //       }
+// //     //       else{
+// //     //         return {...node,children:addNode(no.children,parentId,newNode)}
+
+// //     //       }
+// //     //     })
+// //     if (node.id == parentId && node.type == "folder") {
+// //       return {
+// //         ...node,
+// //         children: [
+// //           ...(node.children || []),
+// //           { ...newNode, id: node.children.length + parentId },
+// //         ],
+// //       };
+// //     }
+// //     else{
+// //          return {...node,
+// //           children:node.children?.map((child,index)=>addNode(child,newNode,parentId))
+// //          }
+// //     }
+// //   };
+// //   return (
+// //     <>
+// //       <div>
+// //         <TreeNode node={nodeStructure} addNode={addNode} nodeStructure={nodeStructure} setNodeStructure={setNodeStructure}/>
+// //       </div>
+// //     </>
+// //   );
+// // }
+
+// // import React, { useState, useEffect } from "react";
+// // import folder from "../fileexplorerData.json";
+// // const TreeNode = ({ node ,nodeStructure,addNode,setNodeStructure}) => {
+// //   const [expanded, setExpanded] = useState(false);
+// //   const [activeAdd, setAddActive] = useState(false);
+// //   const [newNode,setNewNode]=useState({type:"folder"})
+// //   const handleExpand = (e) => {
+// //     e.stopPropagation();
+// //     setExpanded((prev) => !prev);
+// //   };
+
+// //   const handleAdd = (e,id) => {
+
+// //     const updateNode = addNode(nodeStructure, newNode, id);
+// //     setNodeStructure(updateNode);
+// //   };
+
+// // const handleOnchange=(e)=>{
+// // if(e.target.name=="name"){
+// // setNewNode({...newNode,name:e.target.value})
+// // }
+// // else{
+// //   setNewNode({...newNode,type:e.target.value})
+// // }
+// // }
+
+// //   const handleAddNode = (e) => {
+// //     e.stopPropagation();
+// //     setAddActive((prev) => !prev);
+// //   };
+// //   if (node.type === "folder") {
+// //     return (
+// //       <>
+// //         {" "}
+// //         <div style={{ display: "flex" }}>
+// //           {" "}
+// //           <div onClick={handleExpand}>{node.name}</div>
+// //           <div onClick={handleAddNode}>+</div>
+// //         </div>
+// //         {expanded &&
+// //           node.children?.map((child, index) => {
+// //             return <TreeNode node={child}  nodeStructure={nodeStructure} setNodeStructure={setNodeStructure} addNode={addNode}/>;
+// //           })}
+// // {     activeAdd&&   <div>
+// //           <input onChange={handleOnchange} name="name" type="text" placeholder="Enter Name" />
+// //           <input onChange={handleOnchange} name="type" type="text" placeholder="Enter Type" />
+// //           <button onClick={(e)=>handleAdd(e,node.id)}>Add</button>
+// //         </div>}
+// //       </>
+// //     );
+// //   } else {
+// //     return (
+// //       <>
+// //         <div>{node.name}</div>
+// //       </>
+// //     );
+// //   }
+// // };
+
+// // const FileExplorer = () => {
+
+// //   const [nodeStructure, setNodeStructure] = useState(folder);
+// //   function addNode(node,newNode,parentId){
+// //     console.log("gsdjhd",node)
+// //     if(node.id==parentId&&node.type=="folder"){
+// //  return{...node,children:[...(node.children||[]),{...newNode,id:node.children?.length+1}]}
+// //     }
+// //     else{
+// //       return{...node,
+// //         children: node?.children?.map((child)=>{
+// //        return addNode(child,newNode,parentId)
+// //       })}
+// //     }
+// //     }
+// //     function deleteNode(parentId){
+// //       return {}
+// //       //return {...node,children:node.children.filter((child)=>{child.id!==parentId})}}
+// //     }
+// //   console.log("Node", nodeStructure);
+// //   return (
+// //     <div>
+// //       <TreeNode node={nodeStructure} nodeStructure={nodeStructure} setNodeStructure={setNodeStructure} addNode={addNode}/>
+// //     </div>
+// //   );
+// // };
+
+// // export default FileExplorer;
+
+// import React, { useState } from "react";
+// import fileFolder from "../fileexplorerData.json";
 
 // const TreeNode=({node})=>{
-//   const [expanded,setExpanded]=useState(false)
-//   const handleExpand=()=>{
-// setExpanded(prev=>!prev)
-//   }
-
-//     if(node.type==="folder"){return(
-// <div>
-// <div onClick={handleExpand}>{node.name} +</div>
-//     { expanded&& node.children?.map((child,text)=><>
-
-//       <TreeNode  node={child}/></>)}
-//       </div>)
-//     }
-//     else{
-//       console.log("Hi ther",node.name)
-
-//       return<div>{node.name }-</div>
-//     }
-
+//      const [expanded,SetExpanded]=useState(false)
+//      const handleExpand=(e)=>{
+//       SetExpanded(prev=>!prev)
+//      }
+//        if(node.type=="folder"){
+//       return(<>  <div onClick={handleExpand}>{node.name}</div>
+//         {expanded&&node.children?.map((child)=><TreeNode node={child}/>)}
+//        </>)}
+//        else{
+//        return  <div>{node.name}</div>
+//        }
 // }
 
-// const FileExplorer=()=>{
+// const FileExplorer = () => {
+//   const [folderStructure,setFolderStructure]=useState(fileFolder)
 
-//   console.log("Folfder Strucutre",folderStructure)
-//   return(<div><TreeNode node={folderStructure}/></div>)
+// function addNode(newNode,node,parentId){
+//        if(parentId===node.child){
+//            return{...node,children:[...(node.children||[]),newNode]}
+//        }
+//        else{
+//         return{...node,children:node.children.map((child)=>addNode(newNode,child,parentId))}
+//        }
 // }
 
-// export default FileExplorer
-
-// import React ,{useEffect,useState} from 'react'
-
-// import folderData from '../fileexplorerData.json'
-// //item={a:b,c:d}
-// // {...item,...(true&&{child:[]})}
-
-// const insertNode=(node,targetID,itemTyep)=>{
-
+// function deleteNode(node,nodeId){
+//          return {...node,children:node.children?.filter((child)=>
+//       nodeId!==child.id
+//          ).map(child=>deleteNode(child,node.id))}
 // }
+//   return <div>
 
-// const TreeNode=({node})=>{
-// const [expanded,setExpanded]=useState(false)
-// const [openInput,setOpenInput]=useState(false)
+//         <TreeNode node={folderStructure}/>
 
-// const handleExpandFolder=(e)=>{
-//   //Event prapogation is important because it it is firing parent event ,which causing parent to close
-//   e.stopPropagation()
-//   setExpanded(prev=>!prev)
-// }
-// const addFolder=( )=>{
-//   console.log("Id",foderId)
-//   setOpenInput(true)
-//   console.log("FOlder",folder)
-
-// }
-
-// const handleSubmit=()=>{
-
-// }
-//   if(node.type="folder"){
-//       return <div onClick={handleExpandFolder}>
-//         <h3>{node.name}</h3>
-//         <span onClick={addFolder}>+</span>
-//         {openInput&&<input type="text"/>}
-//         {expanded&&node.children?.map((child,index)=><TreeNode node={child}/>)}
-//       </div>
-//   }
-//   else{
-//       return <div><h6>{node.name}</h6>
-//      </div>
-//   }
-// }
-
-// const FileExplorer=()=>{
-//   const [folder,setFolder]=useState(folderData)
-
-//    return <>
-
-//    <div>
-// <TreeNode node={folder} addFolder={addFolder}/>
-//    </div>
-//    </>
-// }
-
-// export default FileExplorer
-
-// import React, { useState, useEffect } from "react";
-// import nodeS from "../fileexplorerData.json";
-
-// const TreeNode = ({ node, addNode,nodeStructure ,setNodeStructure}) => {
-//   const [expanded, setExapnaded] = useState(false);
-//   const [addNodeActive, setAddNodeActive] = useState(false);
-//   const [newFolder, setNewFolder] = useState({ name: "Hell", type: "folder" });
-
-//   const handleExpandFolder = (e) => {
-//     e.stopPropagation();
-//     setExapnaded((prev) => !prev);
-//   };
-//   const handleAdd = (e) => {
-//     e.stopPropagation();
-//     setAddNodeActive((prev) => !prev);
-//   };
-
-//   const handleAddFolderOrfile=(id)=>{
-//  const updateNode=  addNode(nodeStructure,newFolder,id)
-//  setNodeStructure(updateNode)
-//   }
-// const handleFileNameANdType=(event)=>{
-//   if(event.target.name=="name"){
-//     setNewFolder({...newFolder,name:event.target.value})
-//   }
-//   else{
-//     setNewFolder({...newFolder,type:event.target.value,...(event.target.value=="folder"?{children:[]}:{})})
-
-//   }
-// }
-
-//   useEffect(() => {
-//     console.log("Hello",newFolder)
-//    // setNodeStructure( addNode(nodeS, newFolder, "1"))
-//   }, []);
-
-//   if (node.type == "folder") {
-//     return (
-//       <div >
-//         <span onClick={handleExpandFolder}>{node.name}</span>
-//         <>+E</>
-//         <div onClick={handleAdd}>Add</div>
-//         {addNodeActive ? (
-//           <>
-//             <input name="name" type="text" placeholder="Name" onChange={handleFileNameANdType}/>
-//             <input name="type" type="text" placeholder="type"  onChange={handleFileNameANdType}/>
-//             <button onClick={()=>handleAddFolderOrfile(node.id)}>Add</button>
-//           </>
-//         ) : null}
-//         {expanded &&
-//           node.children.map((child, index) => <TreeNode node={child} addNode={addNode} nodeStructure={nodeStructure} setNodeStructure={setNodeStructure}/>)}
-//       </div>
-//     );
-//   } else {
-//     return (
-//       <div>
-//         <span>{node.name}</span>
-//       </div>
-//     );
-//   }
+//   </div>;
 // };
 
-// export default function FileExplorer() {
-//   console.log("Fi", nodeS);
-//   const [nodeStructure, setNodeStructure] = useState(nodeS);
-//   const addNode = (node, newNode, parentId) => {
-//     console.log("Add Node",newNode)
-//     // console.log("vfjhsfh",node,newNode,parentId)
-//     //     return node.map((nod,index)=>{
-//     //       if(nod.id==parentId&&nod.type=="folder"){
-//     //         return {
-//     //           ...node,children:[...(node.children||[]),{...newNode,id:node.children.length+parentId}]
-//     //         }
-//     //       }
-//     //       else{
-//     //         return {...node,children:addNode(no.children,parentId,newNode)}
+// export default FileExplorer
 
-//     //       }
-//     //     })
-//     if (node.id == parentId && node.type == "folder") {
-//       return {
-//         ...node,
-//         children: [
-//           ...(node.children || []),
-//           { ...newNode, id: node.children.length + parentId },
-//         ],
-//       };
-//     }
-//     else{
-//          return {...node,
-//           children:node.children?.map((child,index)=>addNode(child,newNode,parentId))
-//          }
-//     }
-//   };
-//   return (
-//     <>
-//       <div>
-//         <TreeNode node={nodeStructure} addNode={addNode} nodeStructure={nodeStructure} setNodeStructure={setNodeStructure}/>
-//       </div>
-//     </>
-//   );
+//!Last
+// import React, { useState } from 'react'
+// import fileFolder from "../fileexplorerData.json";
+
+// const TreeNode=({node,deleteNode,setNodes})=>{
+
+// const [expand,setExpand]=useState(false)
+
+// const handleExpand=(e)=>{
+//   e.stopPropagation()
+//   setExpand((prev)=>!prev)
 // }
 
-import React, { useState, useEffect } from "react";
-import folder from "../fileexplorerData.json";
-const TreeNode = ({ node ,nodeStructure,addNode,setNodeStructure}) => {
-  const [expanded, setExpanded] = useState(false);
-  const [activeAdd, setAddActive] = useState(false);
-  const [newNode,setNewNode]=useState({type:"folder"})
-  const handleExpand = (e) => {
-    e.stopPropagation();
-    setExpanded((prev) => !prev);
-  };
+// const deletes=(e,id)=>{
+//   e.stopPropagation()
+//   setNodes(prev=>deleteNode(id))
+// }
 
-  const handleAdd = (e,id) => {
-    
-    const updateNode = addNode(nodeStructure, newNode, id);
-    setNodeStructure(updateNode);
-  };
+//   if(node&&node.type=="folder"){
+//      return(<>
+//       <div onClick={handleExpand}>{node.name}  <span onClick={(e)=>{
+//         e.stopPropagation()
+//         deletes(e,node?.id)}}>add+</span></div>
+//       {expand&&node?.children&&node?.children?.map((child,index)=><TreeNode node={child} deleteNode={deleteNode} setNodes={setNodes}/>)}</>)
+//     }
+//     else{
+//       return (<div>
+//         {node.name}
+//         <span onClick={(e)=>{
+//         e.stopPropagation()
+//         deletes(e,node?.id)}}>add+</span>
+//       </div>)
+//     }
+// }
 
-const handleOnchange=(e)=>{
-if(e.target.name=="name"){
-setNewNode({...newNode,name:e.target.value})
-}
-else{
-  setNewNode({...newNode,type:e.target.value})
-}
+// const FileExplorer=()=>{
+// const [nodes,setNodes]=useState(fileFolder)
+
+// const addFoleder=(parentID,newNode,node)=>{
+//           if(parentID===node.id){
+//             return({...node,children:[...node.children,newNode]})
+//           }
+//           else{
+//             return({...node,children:node.children.map(child=>addNode(parentID,newNode,child))})
+//           }
+// }
+
+// const deleteNode=(nodeId,node=nodes)=>{
+//   console.log("VJHK",node)
+//     return({...node,children:node?.children?.filter((child)=>nodeId!=child.id).map(child=>deleteNode(nodeId,child))})
+// }
+//   return (<div>
+// <TreeNode node={nodes} deleteNode={deleteNode}setNodes={setNodes}/>
+//     </div>)
+
+// }
+
+// export default FileExplorer
+
+import React, { useState } from "react";
+import nodes from "../fileexplorerData.json";
+
+const FolderName = ({ name, type, setOpenFolder }) => {
+  return (
+    <>
+      {type == "file" ? (
+        <>
+          <h3>{name.toUpperCase()}</h3>
+          <button>Delete</button>
+        </>
+      ) : (
+        <div style={{ display: "flex", width: "100px" }}>
+          <h1>{name.toUpperCase()}</h1>
+          <button onClick={() => setOpenFolder((prev) => !prev)}>^</button>
+          <button>Add</button>
+          <button>Delete</button>
+        </div>
+      )}
+    </>
+  );
+};
+
+const InputFields=()=>{
+  return (<>
+    <input placeholder="Enter Folder/File name"/>
+     <select>
+      <option/>
+      </select></>
+  )
 }
 
-  const handleAddNode = (e) => {
-    e.stopPropagation();
-    setAddActive((prev) => !prev);
-  };
-  if (node.type === "folder") {
+const FolderNode = ({ node }) => {
+  const [openFolder, setOpenFolder] = useState(false);
+  if (node.type == "folder") {
     return (
       <>
-        {" "}
-        <div style={{ display: "flex" }}>
-          {" "}
-          <div onClick={handleExpand}>{node.name}</div>
-          <div onClick={handleAddNode}>+</div>
-        </div>
-        {expanded &&
-          node.children?.map((child, index) => {
-            return <TreeNode node={child}  nodeStructure={nodeStructure} setNodeStructure={setNodeStructure} addNode={addNode}/>;
-          })}
-{     activeAdd&&   <div>
-          <input onChange={handleOnchange} name="name" type="text" placeholder="Enter Name" />
-          <input onChange={handleOnchange} name="type" type="text" placeholder="Enter Type" />
-          <button onClick={(e)=>handleAdd(e,node.id)}>Add</button>
-        </div>}
+        <>
+          <FolderName
+            name={node.name}
+            type={node.type}
+            setOpenFolder={setOpenFolder}
+          />
+        </>
+        {openFolder &&
+          node.children.map((child, index) => <FolderNode node={child} />)}
       </>
     );
   } else {
     return (
       <>
-        <div>{node.name}</div>
+        <FolderName name={node.name} type={node.type} />
       </>
     );
   }
 };
 
 const FileExplorer = () => {
+  const [folderStructur, setFolderStructure] = useState(nodes);
+  console.log("Data of folder here", folderStructur);
 
-  
-  
-  const [nodeStructure, setNodeStructure] = useState(folder);
-  function addNode(node,newNode,parentId){
-    console.log("gsdjhd",node)
-    if(node.id==parentId&&node.type=="folder"){
- return{...node,children:[...(node.children||[]),{...newNode,id:node.children?.length+1}]}
-    }
-    else{
-      return{...node,
-        children: node?.children?.map((child)=>{
-       return addNode(child,newNode,parentId)
-      })}
-    }
-    }
-    function deleteNode(parentId){
-      return {}
-      //return {...node,children:node.children.filter((child)=>{child.id!==parentId})}}
-    }
-  console.log("Node", nodeStructure);
+  const addNode=(parentId,newDetails,node)=>{
+      if(parentId==node.id){
+        return {...node,children:[...node.children,newNode]}
+      }
+      else{
+        return {...node,children:node.children.map(child=>addNode(parentId,newDetails,child))}
+      }
+  }
+  const deleteNode=(nodeId,node)=>{
+        if(nodeId==node.id)return null
+        if(!node.children)return node
+        return {...node,children:node.children.filter(child=>child.id!==nodeId).map(child=>deleteNode(nodeId,child))}
+  }
+
   return (
     <div>
-      <TreeNode node={nodeStructure} nodeStructure={nodeStructure} setNodeStructure={setNodeStructure} addNode={addNode}/>
+      <FolderNode node={folderStructur} />
     </div>
   );
 };
