@@ -1,5 +1,3 @@
-import React from "react";
-
 const userData = [
   { name: "Abhishek", id: 25, age: 29, designation: "Solution Engineer" },
   { name: "Rohit Sharma", id: 26, age: 28, designation: "Frontend Developer" },
@@ -44,55 +42,52 @@ const userData = [
   { name: "Isha Sharma", id: 54, age: 26, designation: "Support Engineer" },
 ];
 
+import React from "react";
 
-
-export default function Pagination() {
-  const [totaluserData, setTotalUserData] = React.useState([]);
-  const [currentPage, setCurrent] = React.useState(1);
-  const [pageSize, setPageSize] = React.useState(10);
-  async function getUSerData() {
-    let data;
-    let dataLoader = new Promise((resolve, reject) => resolve(userData));
-    return dataLoader;
-  }
-
-  React.useEffect(() => {
-    let data;
-    const getter = async () => {
-      data = await getUSerData();
-      console.log("Dta", data);
-      setTotalUserData(data);
-    };
-    getter();
-  }, [currentPage]);
-  {
-    console.log("Totla user", totaluserData);
-  }
-
+const Pagination = ({
+  currentPage,
+  handleCurrentPage,
+  pageSize,
+  handlePageSize,
+  pageSizes,
+  numberOfPages,
+}) => {
   return (
-    <div>
-      {console.log("Totla user", totaluserData)}
-      {totaluserData
-        ?.filter((data, index) => {
-          return (
-            index >= (currentPage - 1) * pageSize &&
-            index < currentPage * pageSize
-          );
-        })
-        .map((data) => (
-            
-          <div>{data.name}</div>
-        ))}
-      <div style={{ display: "flex", justifyContent:'space-between' }}>
-        <div
-          onClick={() => setCurrent((prev) => (prev == 1 ? prev : prev - 1))}
-        >
-          Prev
-        </div>
-        <div onClick={() => setCurrent((prev) => (prev == 3 ? prev : prev + 1))}>
-          Next
-        </div>
-      </div>
+    <div style={{display:'flex',justifyContent:'space-between',width:'100%'}}>
+      <span>Prev</span>
+      {Array.from({ length: numberOfPages }, (_, i) => i + 1).map(
+        (value, index) => (
+          <div>{value}</div>
+        )
+      )}
+      <span>Next</span>
     </div>
   );
-}
+};
+
+const PaginationContainer = ({
+  children,
+  currentPage = 0,
+  handleCurrentPage,
+  pageSize = 10,
+  handlePageSize,
+  pageSizes = [],
+  totalNumberOfItems = 200,
+}) => {
+  const numberOfPages = Math.floor(totalNumberOfItems / pageSize);
+  return (
+    <div>
+      {children}
+      <Pagination
+        currentPage={currentPage}
+        handleCurrentPage={handleCurrentPage}
+        pageSize={10}
+        handlePageSize={handlePageSize}
+        pageSizes={pageSizes}
+        numberOfPages={numberOfPages}
+      />
+    </div>
+  );
+};
+
+export default PaginationContainer;

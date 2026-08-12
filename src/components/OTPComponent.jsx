@@ -100,8 +100,6 @@ function OTPComponent({
 
 
 
-promise.then((value)=>console.log("Value",value))
-
   return (
     <div>
       {otp.map((digit, index) => (
