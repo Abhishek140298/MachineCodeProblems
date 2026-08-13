@@ -23,12 +23,12 @@ const userData = [
     age: 31,
     designation: "Cloud Architect",
   },
-  {
-    name: "Kiran Desai",
-    id: 43,
-    age: 29,
-    designation: "Database Administrator",
-  },
+  // {
+  //   name: "Kiran Desai",
+  //   id: 43,
+  //   age: 29,
+  //   designation: "Database Administrator",
+  // },
   { name: "Shreya Kulkarni", id: 44, age: 26, designation: "Software Tester" },
   { name: "Aakash Joshi", id: 45, age: 32, designation: "React Developer" },
   { name: "Nidhi Chauhan", id: 46, age: 25, designation: "Content Writer" },
