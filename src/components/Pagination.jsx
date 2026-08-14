@@ -42,7 +42,7 @@ const userData = [
   { name: "Isha Sharma", id: 54, age: 26, designation: "Support Engineer" },
 ];
 
-import React from "react";
+import React, { useState } from "react";
 
 const Pagination = ({
   currentPage,
@@ -53,27 +53,46 @@ const Pagination = ({
   numberOfPages,
 }) => {
   return (
-    <div style={{display:'flex',justifyContent:'space-between',width:'100%'}}>
-      <span>Prev</span>
-      {Array.from({ length: numberOfPages }, (_, i) => i + 1).map(
-        (value, index) => (
-          <div>{value}</div>
-        )
-      )}
-      <span>Next</span>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        width: "100vh",
+       
+      }}
+    >
+      <span onclick={() => handleCurrentPage("prev")}>Prev</span>
+      {Array.from(
+        { length: numberOfPages / 5 },
+        (_, i) => currentPage + 1 + i
+      ).map((value, index) => (
+        <div
+          style={{
+            border:
+              value - 1 == currentPage ? "1px solid blue" : "1px solid black",
+          }}
+          onClick={() => handleCurrentPage(value)}
+        >
+          {value}
+        </div>
+      ))}
+      <span onclick={() => handleCurrentPage("next")}>Next</span>
     </div>
   );
 };
 
 const PaginationContainer = ({
   children,
-  currentPage = 0,
-  handleCurrentPage,
+  currentPage :externalCurrentPage,
+  handleCurrentPage:externlHandler,
   pageSize = 10,
   handlePageSize,
   pageSizes = [],
   totalNumberOfItems = 200,
 }) => {
+  const [internalCurrentPage,setInternalCurentPage]=useState(0)
+  currentPage=externalCurrentPage??internalCurrentPage
+  handleCurrentPage=externlHandler??setInternalCurentPage
   const numberOfPages = Math.floor(totalNumberOfItems / pageSize);
   return (
     <div>
