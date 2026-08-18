@@ -75,7 +75,7 @@ const toggle=()=>{
 </ToastProvider> */}
 {/* <FormComponent handleSubmit={()=>{console.log("I am clicked")}}/> */}
 {/* <MultipleRequestComponent/> */}
-<Pagination/>
+<TypeAhead/>
     </>
   );
 }
