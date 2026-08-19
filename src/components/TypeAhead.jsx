@@ -1,57 +1,57 @@
 // import React, { useCallback, useEffect, useState ,useMemo} from "react";
 
- export const suggestions = [
-     {
-       id: 1,
-       name: "React",
-       category: "Frontend",
-     },
-     {
-       id: 2,
-       name: "React Native",
-       category: "Mobile",
-     },
-     {
-       id: 3,
-       name: "React Query",
-       category: "Library",
-     },
-     {
-       id: 4,
-       name: "Redux",
-       category: "State Management",
-     },
-     {
-       id: 5,
-       name: "Redux Toolkit",
-       category: "State Management",
-     },
-     {
-       id: 6,
-       name: "Next.js",
-       category: "Framework",
-     },
-     {
-       id: 7,
-       name: "Angular",
-       category: "Framework",
-     },
-     {
-       id: 8,
-       name: "Vue.js",
-       category: "Framework",
-     },
-     {
-       id: 9,
-       name: "TypeScript",
-       category: "Language",
-     },
-     {
-       id: 10,
-       name: "Node.js",
-       category: "Backend",
-     },
-   ];
+export const suggestions = [
+  {
+    id: 1,
+    name: "React",
+    category: "Frontend",
+  },
+  {
+    id: 2,
+    name: "React Native",
+    category: "Mobile",
+  },
+  {
+    id: 3,
+    name: "React Query",
+    category: "Library",
+  },
+  {
+    id: 4,
+    name: "Redux",
+    category: "State Management",
+  },
+  {
+    id: 5,
+    name: "Redux Toolkit",
+    category: "State Management",
+  },
+  {
+    id: 6,
+    name: "Next.js",
+    category: "Framework",
+  },
+  {
+    id: 7,
+    name: "Angular",
+    category: "Framework",
+  },
+  {
+    id: 8,
+    name: "Vue.js",
+    category: "Framework",
+  },
+  {
+    id: 9,
+    name: "TypeScript",
+    category: "Language",
+  },
+  {
+    id: 10,
+    name: "Node.js",
+    category: "Backend",
+  },
+];
 
 // const InputSerach = (value, handleInput) => {
 //   return (
@@ -188,42 +188,68 @@
 // export default TypeAhead
 
 import React, { useEffect, useState } from "react";
-
+const cache = {}
 const Typeahead = () => {
- const [query,setQuery]=useState("")
- const [isSuggestion,setIsSuggestion]=useState(false)
- const [suggestionList,setSuggestionList]=useState([])
+  const [query, setQuery] = useState("");
+  const [isSuggestion, setIsSuggestion] = useState(false);
+  const [suggestionList, setSuggestionList] = useState([]);
 
- const cache=new Map()
+ 
 
- const handleChange=(event)=>{
-     console.log("Event ",event.target.value)
-     setQuery(event.target.value)
- }
+  //Debounce for the search
 
-const isQueryPresent=(query)=>{
-  
-      const sugges=suggestions.filter(value=>value.name.includes(query)||value.category.includes(query))
-     return sugges
-}
+  const debounce = () => {
+    let timer;
+    return (event) => {
+      const value=event.target.value
+      if (timer) {
+        clearTimeout(timer);
+      }
+      timer = setTimeout(() => {
+        setQuery(event.target.value);
+      }, 1000);
+    };
+  };
 
+  const handleChange = debounce()
 
-useEffect(()=>{
+  const isQueryPresent = (query) => {
+    console.log("gchbjnk",cache)
+    const sugges = suggestions.filter(
+      (value) => value.name.includes(query) || value.category.includes(query)
+    );
+    return sugges;
+  };
 
-if(query){setIsSuggestion(true)
-  setSuggestionList(isQueryPresent(query))
-  }
-},[query])
+  useEffect(() => {
+    if (query) {
+      setIsSuggestion(true);
+      if(cache[query]){setSuggestionList(cache[query])}
+     else{
+      const su=isQueryPresent(query)
+       setSuggestionList(su);
+      cache[query]=su
+      console.log("qery",cache)
+    }
+    }
+    else{
+      setIsSuggestion(false)
+      setSuggestionList([]);
+    }
+  }, [query]);
 
   return (
     <div>
       <input type="text" onChange={handleChange} />
-      {isSuggestion&&<div>
-        {suggestionList?.map(value=><div>{value.name}</div>)}
-        </div>}
+      {isSuggestion && (
+        <div>
+          {suggestionList?.map((value) => (
+            <div>{value.name}</div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
-
-export default Typeahead
+export default Typeahead;
