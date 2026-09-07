@@ -50,6 +50,22 @@ const [commentById,setCommentById]=useState({})
 const [childrenOf,setChildrenOf]=useState({})
 const root=useRef()
 
+const addComment=(parentId,newChild)=>{
+    console.log("harim",parentId)
+     setChildrenOf(prev=>{
+      let  children=prev[parentId]||new Set()
+      let updated=new Set(children)
+       updated.add(newChild.id)
+       return {...prev,[parentId]:updated}
+     })
+     setCommentById(prev=>({...prev,[newChild?.id]:newChild}))
+}
+
+
+useEffect(()=>{
+    addComment("root",{ id: 6, parentId: "root", text: "Not ????sthe Disagree",     authorId: "u5", createdAt: 1049 })
+},[])
+
 const addNormalizedData=()=>{
     comments.forEach((comment,index)=>{
         setCommentById((prev)=>({...prev,[comment.id]:comment}))
