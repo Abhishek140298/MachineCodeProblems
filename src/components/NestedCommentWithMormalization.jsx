@@ -26,7 +26,7 @@ childrenOf will be use to build the
 // setChildrenOf(prev=>prev[comment.parentId]?{...prev,[comment.parentId]:[...prev[comment.parentId],comment.id]}:{...prev,[comment.parentId]:[comment.id]})
 
 const TreeNode=({comm,commentById,childrenOf})=>{
-    console.log("jbsnm,",comm)
+    console.log("ram",childrenOf)
 return (<div>{
     Array.from(comm||[])?.map((com)=>{ //![...comm]
        
@@ -51,7 +51,7 @@ const [childrenOf,setChildrenOf]=useState({})
 const root=useRef()
 
 const addComment=(parentId,newChild)=>{
-    console.log("harim",parentId)
+   
      setChildrenOf(prev=>{
       let  children=prev[parentId]||new Set()
       let updated=new Set(children)
@@ -61,10 +61,19 @@ const addComment=(parentId,newChild)=>{
      setCommentById(prev=>({...prev,[newChild?.id]:newChild}))
 }
 
-
-useEffect(()=>{
-    addComment("root",{ id: 6, parentId: "root", text: "Not ????sthe Disagree",     authorId: "u5", createdAt: 1049 })
-},[])
+const deleteChild=(id,parentId)=>{
+console.log("453",id,)
+      setChildrenOf((prev)=>{
+         let children=prev[parentId]
+         let update=new Set(children)
+         update.delete(id)
+         return {...prev,[parentId]:update}
+      })
+}
+// useEffect(()=>{
+//    // addComment("root",{ id: 6, parentId: "root", text: "Not ????sthe Disagree",     authorId: "u5", createdAt: 1049 })
+//    deleteChild(3,1)
+// },[])
 
 const addNormalizedData=()=>{
     comments.forEach((comment,index)=>{
@@ -89,6 +98,10 @@ useEffect(()=>{
 addNormalizedData()
     
 },[])
+// useEffect(()=>{
+//    // addComment("root",{ id: 6, parentId: "root", text: "Not ????sthe Disagree",     authorId: "u5", createdAt: 1049 })
+//    deleteChild(3,1)
+// },[])
 
 
 return (<><TreeNode comm={childrenOf['root']} commentById={commentById} childrenOf={childrenOf}/></>)

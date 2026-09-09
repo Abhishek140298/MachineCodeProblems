@@ -43,6 +43,7 @@ import MultipleRequestComponent from "./components/MultipleRequestComponent";
 import OTPComponent from "./components/OTPComponent";
 import NestedComment from "./components/NestedComment";
 import NestedCommentWithN from "./components/NestedCommentWithMormalization";
+import Kanbanboard from "./components/Kanbanboard";
 
 function App() {
   const [progress, setProgress] = useState(0);
@@ -77,7 +78,7 @@ const toggle=()=>{
 </ToastProvider> */}
 {/* <FormComponent handleSubmit={()=>{console.log("I am clicked")}}/> */}
 {/* <MultipleRequestComponent/> */}
-<NestedCommentWithN/>
+<Kanbanboard/>
     </>
   );
 }
